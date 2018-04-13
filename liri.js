@@ -26,7 +26,7 @@ switch (liriCommand) {
 		spotifyThisSong(input);
 		break;
 	case 'movie-this':
-		movieThis(process.argv[3]);
+		movieThis(input);
 		break;
 	case 'do-what-it-says':
 		fs.readFile('random.txt', 'utf-8',function (err,data) {
@@ -92,7 +92,7 @@ function spotifyThisSong(name) {
 function movieThis() {
     var url = "http://www.omdbapi.com/?apikey=trilogy"
     //If user doesn't give valid name, use Dunkirk
-    process.argv[3] ? url += '&t=' + process.argv[3] : url += '&t=Dunkirk';
+    input ? url += '&t=' + input : url += '&t=Dunkirk';
     url += '&type=movie';
     request(url, function (err, resp, body) {
         body = JSON.parse(body);
